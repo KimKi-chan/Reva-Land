@@ -40,6 +40,8 @@ for i in range(0, 10000):
 U = Stack()
 
 def calen(n, items):
+    print('')
+    print( n ,'월 시간표')
     z = 0
     A = calendar.monthrange(2019,n)
     X = ['']*35
