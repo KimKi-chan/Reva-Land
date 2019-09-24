@@ -1,8 +1,9 @@
+# 달력 클래스로 정의
 class assignment:
     def __init__(self):
         name = input("수행평가의 이름: ")
         teacher = input("수행평가 담당 선생님: ")
-        month, day = input("제출 기한: ").split("/")
+        month, day = input("제출 기한(시작일/기한): ").split("/")
         X = input("난이도: ")
         self.name = name
         self.teacher = teacher
@@ -10,7 +11,12 @@ class assignment:
         self.day = int(day)
         if X in ['1', '2', '3', '4', '5']:
             self.X = X
-            
+# 각각의 계획의 상세정보 확인
+def check_day(n):
+    m = k(n)
+    print(m.name)
+    print("선생님:"+m.teacher)
+    print("난이도:"+m.X)
 class Stack:
     def __init__(self, k = []) :
         self.items = k
@@ -24,12 +30,14 @@ class Stack:
         return self.items[-1]
     def size(self) :
         return len(self.items)
-    
+# import 
 from pandas import Series
 import numpy as np
 import pandas as pd
+#달력 라이브러리 import
 import calendar
 from IPython.display import display
+
 k = []
 for i in range(0, 10000):
     Q = input('수행평가를 입력하세요: O or X : ')
@@ -38,12 +46,12 @@ for i in range(0, 10000):
     if Q == 'X':
         break
 U = Stack()
-
+# 달력 생성(setting)
 def calen(n, items):
     z = 0
-    A = calendar.monthrange(2019,n)
-    X = ['']*35
-    Y = [['']*7, ['']*7, ['']*7, ['']*7, ['']*7]
+    A = calendar.monthrange(2019,n) #년도,달 설정
+    X = ['']*35 # 35개 칸(5주)
+    Y = [['']*7, ['']*7, ['']*7, ['']*7, ['']*7] 
     D = [['']*7, ['']*7, ['']*7, ['']*7, ['']*7]
     for i in range (0, A[1]):
         X[i+A[0]] = i+1
@@ -61,4 +69,4 @@ def calen(n, items):
     pd.DataFrame(cal)
     display(pd.DataFrame(data = cal, columns = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'], index = ['', '', '', '', '', '', '', '', '', '']))
     
-calen(4, k)
+calen(4, k) #4월 달력 생성
