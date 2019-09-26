@@ -1,4 +1,4 @@
-class assignment:
+class assignment:                        # 클래스 - 숙제 정의
     def __init__(self):
         name = input("수행평가의 이름: ")
         teacher = input("수행평가 담당 선생님: ")
@@ -10,8 +10,10 @@ class assignment:
         self.day = int(day)
         if X in ['1', '2', '3', '4', '5']:
             self.X = X
-            
-class Stack:
+        else :
+            print('잘못된 수를 입력하셨습니다. 다시 실행해주세요.')
+         
+class Stack:                            # 스택을 사용하기 위해 정의해놓음.
     def __init__(self, k = []) :
         self.items = k
     def isEmpt(self) :
@@ -25,18 +27,23 @@ class Stack:
     def size(self) :
         return len(self.items)
     
-from pandas import Series
+from pandas import Series   #데이터 처리에 특화된 판다 라이브러리를 불러옴
 import numpy as np
 import pandas as pd
 import calendar
 from IPython.display import display
 k = []
-for i in range(0, 10000):
+
+
+while True :
     Q = input('수행평가를 입력하세요: O or X : ')
     if Q == 'O':
         k.append(assignment())
-    if Q == 'X':
+    elif Q == 'X':              #else일 경우 이상한 문자를 쳐도 break 되므로 수정함.
         break
+    else :
+        print('똑바로 하세요')    #박력있는 모습을 보여줌.(?) 이제 사용자가 무서워서 제대로 할것으로 추측됨.
+              
 U = Stack()
 
 def calen(n, items):
